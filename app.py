@@ -48,3 +48,11 @@ else:
     password = st.text_input("Password", type="password")
     if st.button("Login"):
         login(username, password)
+ADMIN_PASSWORD_HASH = hash_password("admin123")
+
+def login(username, password):
+    if username == ADMIN_USERNAME and hash_password(password) == ADMIN_PASSWORD_HASH:
+        st.session_state.logged_in = True
+        return True
+    st.error("❌ Invalid admin credentials")
+    return False
