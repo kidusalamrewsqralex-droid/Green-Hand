@@ -9,7 +9,7 @@ from auth import require_login
 # --------------------------
 require_login()
 
-tab1,tab2,tab3=st.tabs(["LinearRegression model","XGBRegressor model","GradientBoosting model"])
+
 # --------------------------
 
 
@@ -20,6 +20,7 @@ ENCODERS_PATH = os.path.join(MODEL_DIR, "label_encoders.pkl").strip()
 
 with tab1:
     st.title("🌾 CropCast")
+tab1,tab2,tab3=st.tabs(["LinearRegression model","XGBRegressor model","GradientBoosting model"])
     MODEL_PATH = os.path.join(MODEL_DIR, "lr_model.pkl").strip()
 
     # --------------------------
