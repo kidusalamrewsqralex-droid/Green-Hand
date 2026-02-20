@@ -2,8 +2,8 @@ import streamlit as st
 import hashlib
 
 # ---------------- CONFIG ----------------
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD_HASH = hashlib.sha256("admin123".encode()).hexdigest()
+ADMIN_USERNAME = "Square"
+ADMIN_PASSWORD_HASH = hashlib.sha256("sqrv2718".encode()).hexdigest()
 
 st.set_page_config(
     page_title="Admin Login",
