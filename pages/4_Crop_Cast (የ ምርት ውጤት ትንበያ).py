@@ -8,7 +8,7 @@ from auth import require_login
 # Require login
 # --------------------------
 require_login()
- st.title("🌾 CropCast")
+st.title("🌾 CropCast")
 tab1,tab2,tab3=st.tabs(["LinearRegression model","XGBRegressor model","GradientBoosting model"])
 
 
