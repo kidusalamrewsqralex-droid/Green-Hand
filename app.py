@@ -15,7 +15,6 @@ page_icon="🌱",
 layout="centered"
 )
 
----------------- HELPERS ----------------
 
 def hash_password(password):
 return hashlib.sha256(password.encode()).hexdigest()
@@ -33,7 +32,6 @@ def save_users(users):
 with open(USERS_FILE, "w") as f:
 json.dump(users, f, indent=4)
 
----------------- SESSION STATE ----------------
 
 if "logged_in" not in st.session_state:
 st.session_state.logged_in = False
@@ -42,7 +40,6 @@ st.session_state.username = ""
 if "role" not in st.session_state:
 st.session_state.role = ""
 
----------------- AUTH LOGIC ----------------
 
 def login(username, password):
 users = load_users()
@@ -112,12 +109,12 @@ for u in users:
     users[u]["last_logged_in"] = False  
 save_users(users)
 
----------------- AUTO LOGIN ----------------
+
 
 if not st.session_state.logged_in:
 auto_login()
 
----------------- UI ----------------
+
 
 st.title("🌱 GREEN HAND LOGIN SYSTEM")
 
@@ -146,7 +143,7 @@ else:
 if st.button("Logout / ይውጡ"):  
     logout()
 
----------------- LOGIN / SIGNUP ----------------
+#--------------- LOGIN / SIGNUP ----------------
 
 else:
 choice = st.radio("Login / Signup", ["Login / ይግቡ", "Signup / ይመዝገቡ"])
