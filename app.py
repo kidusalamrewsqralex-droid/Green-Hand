@@ -4,7 +4,6 @@ import json
 import os
 import pandas as pd
 
----------------- CONFIG ----------------
 
 USERS_FILE = "users.json"
 ADMIN_USERNAME = "admin"
