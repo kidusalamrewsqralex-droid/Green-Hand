@@ -52,3 +52,12 @@ body = urllib.parse.quote("Hi, what do you want to know about my app, mate?")
 gmail_link = f"https://mail.google.com/mail/?view=cm&fs=1&to={your_email}&su={subject}&body={body}"
 
 st.markdown(f"[📧 Contact Developer]({gmail_link})", unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <a href="https://www.buymeacoffee.com/KidusA" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height: 50px;">
+    </a>
+    """,
+    unsafe_allow_html=True
+)
