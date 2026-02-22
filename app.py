@@ -3,8 +3,8 @@ import hashlib
 
 ---------------- CONFIG ----------------
 
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
+ADMIN_USERNAME = "Square"
+ADMIN_PASSWORD = "sqrv2718"
 
 st.set_page_config(
 page_title="Admin Login",
