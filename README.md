@@ -15,4 +15,7 @@
 - **Dataset:** TensorFlow Plant Village dataset,kaggle crop yield dataset and kaggle crop recommendation data set in addition to the locally gathered data
 - **Deployment:** Streamlit Cloud  
 
+App link:https://plant-disease-detection-system-amhcwzukw24svryvcveckt.streamlit.app/
+
+
 License: MIT License
