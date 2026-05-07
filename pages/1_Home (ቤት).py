@@ -19,8 +19,9 @@ st.markdown("""
 Use the sidebar to navigate between:
 - 🌱 Crop Recommender
 - 🌿 Green Thumb (Plant Disease Detection Model)
-- 🌾 Crop Cast (Crop Yield Prediction Model)
-- 📊 Model Comparisons
+- 🌾 Crop Cast (Crop Yield Prediction Model) 
+- 📊 Model Comparisons 
+
 - ℹ️ About Models
 """)
 
