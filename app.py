@@ -6,8 +6,8 @@ import pandas as pd
 
 # ---------------- CONFIG ----------------
 USERS_FILE = "users.json"
-ADMIN_USERNAME = "Square"
-ADMIN_PASSWORD = "sqrv2718"
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "admin123"
 
 st.set_page_config(
     page_title="Login / Signup",

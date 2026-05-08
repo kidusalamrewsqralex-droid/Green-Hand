@@ -6,7 +6,7 @@ require_login()
 st.title("📊 Model Comparison Dashboard")
 
 
-results_df = pd.read_csv("data/crop recommendation_comparison.csv")  # Make sure path is correct
+results_df = pd.read_csv("data/crop recommendation_comparison.csv")  
 
 
 st.subheader("Crop Recommendation Models")
@@ -22,10 +22,10 @@ st.subheader("🏆 Winning Model")
 st.success(f"**{best_model['Model']}** is the best model! \n"
            f"RMSE: {best_model['RMSE']:.2f}, R²: {best_model['R2']:.2f}")
 
-# 1️⃣ Load your precomputed comparison table
+
 results_df = pd.read_csv("data/crop cast model_comparison.csv")  # Make sure path is correct
 
-# 2️⃣ Display full table
+
 st.subheader("Crop_Cast Models")
 st.dataframe(results_df)
 

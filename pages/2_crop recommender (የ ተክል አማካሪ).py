@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import joblib
 import os
 from auth import require_login
@@ -8,12 +9,12 @@ require_login()
 # PATHS
 # ---------------------------
 MODEL_DIR = "models"
-SCALER_PATH = os.path.join(MODEL_DIR, "scaler2.pkl")
-ENCODERS_PATH = os.path.join(MODEL_DIR, "label_encoders2.pkl")
+SCALER_PATH = os.path.join(MODEL_DIR, "scaler (3).pkl")
+ENCODERS_PATH = os.path.join(MODEL_DIR, "label_encoders (3).pkl")
 
 # Model paths
-RF_MODEL_PATH = os.path.join(MODEL_DIR, "rfc_model.pkl")
-XGB_MODEL_PATH = os.path.join(MODEL_DIR, "xgbc_model.pkl")
+RF_MODEL_PATH = os.path.join(MODEL_DIR, "rfrr_model.pkl")
+XGB_MODEL_PATH = os.path.join(MODEL_DIR, "xgbr_model.pkl")
 
 
 # ---------------------------
@@ -74,15 +75,16 @@ for tab, model_path, model_name in zip(
         # PREDICTION
         # ---------------------------
         if st.button(f"Predict Crop ({model_name})"):
-            input_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
+            input_data = pd.DataFrame([[N, P, K, temperature, humidity, ph, rainfall]],columns=["N", "P", "K", "temperature", "humidity", "ph", "rainfall"])
 
             # Apply scaling if scaler exists
             try:
-                input_data = scaler.transform(input_data)
+                input_scaled = scaler.transform(input_data)
             except:
                 pass  # no scaler
 
             # Predict encoded class
+            input_data= pd.DataFrame(input_scaled,columns=input_data.columns)
             prediction_encoded = model.predict(input_data)[0]
 
             # Decode to crop name

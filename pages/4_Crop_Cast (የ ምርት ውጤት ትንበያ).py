@@ -3,6 +3,8 @@ import numpy as np
 import streamlit as st
 import joblib
 from auth import require_login
+import pandas as pd
+
 
 # --------------------------
 # Require login
@@ -98,21 +100,23 @@ with tab1:
         irrigation_encoded = encoders["Irrigation_Used"].transform([irrigation_value])[0]
 
         # Scale numeric features
-        numeric_features = np.array([[rainfall, temperature, harvest]])
-        numeric_features_scaled = scaler.transform(numeric_features)
+        numeric_features = pd.DataFrame([[rainfall, temperature, harvest]],columns=[	"Rainfall_mm",	"Temperature_Celsius",	"Days_to_Harvest"])
+        scaled_features = scaler.transform(numeric_features)
+        numeric_features_scaled = pd.DataFrame(scaled_features,columns=numeric_features.columns)
 
         # Combine categorical + scaled numeric features in training order
-        features = np.array([[
-            region_encoded,
-            soil_encoded,
-            crop_encoded,
-            fertilizer_encoded,
-            irrigation_encoded,
-            weather_encoded,
-            numeric_features_scaled[0][0],  # Rainfall
-            numeric_features_scaled[0][1],  # Temperature
-            numeric_features_scaled[0][2],  # Days_to_Harvest
-        ]])
+        features = pd.DataFrame([{
+            "Region": region_encoded,
+            "Soil_Type": soil_encoded,
+            "Crop": crop_encoded,
+            "Rainfall_mm": numeric_features_scaled["Rainfall_mm"].iloc[0],
+            "Temperature_Celsius": numeric_features_scaled["Temperature_Celsius"].iloc[0],
+            "Fertilizer_Used": fertilizer_encoded,
+            "Irrigation_Used": irrigation_encoded,
+            "Weather_Condition": weather_encoded,
+            "Days_to_Harvest": numeric_features_scaled["Days_to_Harvest"].iloc[0]
+        }])
+
 
     except Exception as e:
         st.error(f"Error processing features: {e}")
@@ -208,21 +212,24 @@ with tab2:
         irrigation_encoded = encoders["Irrigation_Used"].transform([irrigation_value])[0]
 
         # Scale numeric features
-        numeric_features = np.array([[rainfall, temperature, harvest]])
-        numeric_features_scaled = scaler.transform(numeric_features)
+        numeric_features = pd.DataFrame([[rainfall, temperature, harvest]],columns=[	"Rainfall_mm",	"Temperature_Celsius",	"Days_to_Harvest"])
+        scaled_features = scaler.transform(numeric_features)
+        numeric_features_scaled = pd.DataFrame(scaled_features, columns=numeric_features.columns)
 
         # Combine categorical + scaled numeric features in training order
-        features = np.array([[
-            region_encoded,
-            soil_encoded,
-            crop_encoded,
-            fertilizer_encoded,
-            irrigation_encoded,
-            weather_encoded,
-            numeric_features_scaled[0][0],  # Rainfall
-            numeric_features_scaled[0][1],  # Temperature
-            numeric_features_scaled[0][2],  # Days_to_Harvest
-        ]])
+        features = pd.DataFrame([{
+            "Region": region_encoded,
+            "Soil_Type": soil_encoded,
+            "Crop": crop_encoded,
+            "Rainfall_mm": numeric_features_scaled["Rainfall_mm"].iloc[0],
+            "Temperature_Celsius": numeric_features_scaled["Temperature_Celsius"].iloc[0],
+            "Fertilizer_Used": fertilizer_encoded,
+            "Irrigation_Used": irrigation_encoded,
+            "Weather_Condition": weather_encoded,
+            "Days_to_Harvest": numeric_features_scaled["Days_to_Harvest"].iloc[0]
+        }])
+
+        prediction = model.predict(features)
 
     except Exception as e:
         st.error(f"Error processing features: {e}")
@@ -319,21 +326,24 @@ with tab3:
         irrigation_encoded = encoders["Irrigation_Used"].transform([irrigation_value])[0]
 
         # Scale numeric features
-        numeric_features = np.array([[rainfall, temperature, harvest]])
-        numeric_features_scaled = scaler.transform(numeric_features)
+        numeric_features = pd.DataFrame([[rainfall, temperature, harvest]],columns=[	"Rainfall_mm",	"Temperature_Celsius",	"Days_to_Harvest"])
+        scaled_features = scaler.transform(numeric_features)
+        numeric_features_scaled = pd.DataFrame(scaled_features, columns=numeric_features.columns)
 
         # Combine categorical + scaled numeric features in training order
-        features = np.array([[
-            region_encoded,
-            soil_encoded,
-            crop_encoded,
-            fertilizer_encoded,
-            irrigation_encoded,
-            weather_encoded,
-            numeric_features_scaled[0][0],  # Rainfall
-            numeric_features_scaled[0][1],  # Temperature
-            numeric_features_scaled[0][2],  # Days_to_Harvest
-        ]])
+        features = pd.DataFrame([{
+            "Region": region_encoded,
+            "Soil_Type": soil_encoded,
+            "Crop": crop_encoded,
+            "Rainfall_mm": numeric_features_scaled["Rainfall_mm"].iloc[0],
+            "Temperature_Celsius": numeric_features_scaled["Temperature_Celsius"].iloc[0],
+            "Fertilizer_Used": fertilizer_encoded,
+            "Irrigation_Used": irrigation_encoded,
+            "Weather_Condition": weather_encoded,
+            "Days_to_Harvest": numeric_features_scaled["Days_to_Harvest"].iloc[0]
+        }])
+
+        prediction = model.predict(features)
 
     except Exception as e:
         st.error(f"Error processing features: {e}")
