@@ -68,4 +68,4 @@ from PIL import Image
 st.title("Buy Me a Coffee via telebirr ☕️")
 
 image = Image.open("telebirr_qr.png")
-st.image(image, caption="Scan to use Telebirr ", use_column_width=True)
+st.image(image, caption="Scan to use Telebirr ", width = "stretch)
